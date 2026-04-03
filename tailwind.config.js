@@ -1,55 +1,62 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
       colors: {
-        brand: {
-          black: "#0a0a0a",
-          charcoal: "#1a1a1a",
-          dark: "#141414",
-          orange: "#ff6b00",
-          amber: "#ff8c00",
-          gold: "#ffa500",
-          ember: "#e25822",
-          cream: "#fff5e6",
-        },
+        'brand-orange': '#F97316',
+        'brand-red':    '#C2410C',
+        'brand-cream':  '#FFF8ED',
+        'brand-black':  '#0F0500',
+        'brand-amber':  '#D97706',
+        'brand-gold':   '#FBBF24',
       },
       fontFamily: {
-        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
-        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        bebas: ['var(--font-bebas)', 'Impact', 'Arial Black', 'sans-serif'],
       },
-      animation: {
-        "float-slow": "float 6s ease-in-out infinite",
-        "float-medium": "float 4s ease-in-out infinite",
-        "float-fast": "float 3s ease-in-out infinite",
-        "glow-pulse": "glow-pulse 2s ease-in-out infinite",
-        "flame-flicker": "flame-flicker 3s ease-in-out infinite",
-        "spark": "spark 2s ease-out infinite",
+      fontSize: {
+        'hero': ['clamp(5rem, 20vw, 15rem)', { lineHeight: '0.85', letterSpacing: '-0.02em' }],
       },
       keyframes: {
-        float: {
-          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
-          "50%": { transform: "translateY(-20px) rotate(2deg)" },
+        'fade-up': {
+          '0%':   { opacity: '0', transform: 'translateY(40px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
-        "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px rgba(255,107,0,0.4), 0 0 60px rgba(255,107,0,0.1)" },
-          "50%": { boxShadow: "0 0 30px rgba(255,107,0,0.6), 0 0 80px rgba(255,107,0,0.2)" },
+        'fade-in': {
+          '0%':   { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        "flame-flicker": {
-          "0%, 100%": { opacity: "0.8", transform: "scale(1)" },
-          "50%": { opacity: "1", transform: "scale(1.05)" },
+        'slide-left': {
+          '0%':   { opacity: '0', transform: 'translateX(-60px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
         },
-        spark: {
-          "0%": { opacity: "1", transform: "translateY(0) scale(1)" },
-          "100%": { opacity: "0", transform: "translateY(-100px) scale(0)" },
+        'slide-right': {
+          '0%':   { opacity: '0', transform: 'translateX(60px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
+        },
+        'scale-in': {
+          '0%':   { opacity: '0', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        'float': {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%':      { transform: 'translateY(-12px)' },
         },
       },
-    },
+      animation: {
+        'fade-up':    'fade-up 0.7s ease-out forwards',
+        'fade-in':    'fade-in 0.5s ease-out forwards',
+        'slide-left': 'slide-left 0.7s ease-out forwards',
+        'slide-right':'slide-right 0.7s ease-out forwards',
+        'scale-in':   'scale-in 0.6s ease-out forwards',
+        'float':      'float 3s ease-in-out infinite',
+      },
+    }
   },
-  plugins: [],
-};
+  plugins: []
+}
